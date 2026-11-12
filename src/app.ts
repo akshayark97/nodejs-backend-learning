@@ -2,6 +2,7 @@ import express from "express"
 import { requestLogger } from "./middleware/request-logger.js"
 import { requestTimer } from "./middleware/request-timer.js"
 import { responseHeader } from "./middleware/response-header.js"
+import taskRoutes from './modules/tasks/task.routes.js'
 
 const app = express()
 
@@ -24,5 +25,6 @@ app.get("/health", (req, res) => { // Runs Third
     })
 })
 
+app.use("/api/tasks", taskRoutes)
 
 export default app
